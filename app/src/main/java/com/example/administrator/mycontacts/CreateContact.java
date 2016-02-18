@@ -73,7 +73,7 @@ public class CreateContact extends AppCompatActivity {
         }
         else{
             dbHandler.addContact(name, email, phone); //properly connecting the toast saying 'created' and actual creation
-            Toast.makeText(this, "Contact Created!", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "New Contact Created!", Toast.LENGTH_LONG).show();
         }
     }
 

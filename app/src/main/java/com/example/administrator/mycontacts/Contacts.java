@@ -16,12 +16,7 @@ public class Contacts extends CursorAdapter {
         //calling the constructor for CursorAdapter, passing the context, the cursor and any necessary flags
         super(context, cursor, flags);
     }
-    /*
-    I'm adding a line to contacts in the hopes it will allow me to add the dang thing to git
-    seriously come on and add to git!
-    ADD TO GIT ALREADYYYYYYYYYYYYYYYYYYy
-    COME ON
-    */
+
 
     @Override
     public View newView(Context context, Cursor cursor, ViewGroup parent) {
