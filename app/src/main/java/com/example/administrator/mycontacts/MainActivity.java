@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 public class MainActivity extends AppCompatActivity {
@@ -37,6 +38,19 @@ public class MainActivity extends AppCompatActivity {
         contactListView.setAdapter(contactAdapter); //let's connect the two!
         toolbar.setSubtitle("Total # Contacts: " + dbHandler.getContactNum()); //getting the total number of contacts and displaying it
         //PUUUUUUUUSH
+
+        //This on click listener lets us open the contact when it's selected
+        contactListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //the intent takes us from this activity to the ViewContact one
+                intent = new Intent(MainActivity.this, ViewContact.class);
+                //it also sends along the ID, like ya do
+                intent.putExtra("_id", id);
+                //and actually runs the intent
+                startActivity(intent);
+            }
+        });
 
 
     }

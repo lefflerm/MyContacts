@@ -21,6 +21,10 @@
         <activity
             android:name=".CreateContact"
             android:label="@string/title_activity_create_contact"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ViewContact"
+            android:label="@string/title_activity_view_contact"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

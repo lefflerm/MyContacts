@@ -99,6 +99,37 @@ public class DBHandler extends SQLiteOpenHelper {
         return dbString;
     }
 
+    //This will create a Contact with all the information from the database
+    public Contact getContact(Integer contactId){
+        Contact conty = null; //intializing to null cause we'll fill it in later
+        //it's called conty because cont sounded silly but i didnt just wanna call it contact
+        SQLiteDatabase db = getWritableDatabase(); //database, so we can query it like always
+        String query = "SELECT * FROM " + TABLE_CONTACTS +
+                " WHERE " + COLUMN_CONTACT_ID + " = " + contactId; //pretty solid query
+        //get everything from the contacts table that has that contact id
+
+        //Holdin our datas
+        Cursor c = db.rawQuery(query,null);
+
+        //num of contaaaaaaacts
+        int numContacts = c.getCount();
+
+        //A just in case if-statement
+        if(numContacts >= 1){
+            c.moveToFirst();
+
+            //creating our Contact object using the information in the 4 spots on our table
+            conty = new Contact((c.getInt(c.getColumnIndex("_id"))),
+                    (c.getString(c.getColumnIndex("contact_name"))),
+                    (c.getString(c.getColumnIndex("contact_email"))),
+                    (c.getString(c.getColumnIndex("contact_phone")))
+            );
+        }
+
+        db.close(); //it's good practice to close your databases behind you
+        return conty; //gotta actually return the contact for use
+    }
+
 
 
 
