@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class ViewContact extends AppCompatActivity {
     Intent intent; //very intentional (this helps us with our menu)
@@ -79,9 +80,11 @@ public class ViewContact extends AppCompatActivity {
     }
 
 
-    //This method can't really do anything just yet but its set up for later so the delete button WILL work in future
+    //This method deletes the contact and runs a toast to show that it occurred
     public void deleteContact(MenuItem menuItem){
-
+        //Its called by a menu resource, so it takes in a MenuItem despite not using it
+        dbHandler.deleteContact((int) id); //we call the newly implemented deleteContact method from the dbHandler
+        Toast.makeText(this, "Contact Deleted!", Toast.LENGTH_LONG).show(); //simple toast to show a job well done
     }
 
 }

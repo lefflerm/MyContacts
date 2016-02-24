@@ -109,7 +109,7 @@ public class DBHandler extends SQLiteOpenHelper {
         //get everything from the contacts table that has that contact id
 
         //Holdin our datas
-        Cursor c = db.rawQuery(query,null);
+        Cursor c = db.rawQuery(query, null);
 
         //num of contaaaaaaacts
         int numContacts = c.getCount();
@@ -128,6 +128,20 @@ public class DBHandler extends SQLiteOpenHelper {
 
         db.close(); //it's good practice to close your databases behind you
         return conty; //gotta actually return the contact for use
+    }
+
+    //This functionality allows deleting of individual contacts
+    public void deleteContact(Integer contactId){
+        //Can't do things with the database without the writeable database!
+        SQLiteDatabase db = getWritableDatabase();
+        //A delete query - we're getting the contact with that id from the full table and deleting it
+        String query = "DELETE FROM " + TABLE_CONTACTS +
+                " WHERE " + COLUMN_CONTACT_ID + " = " + contactId;
+
+        //Just executing the query
+        db.execSQL(query);
+        //And closing the database like good programmers
+        db.close();
     }
 
 

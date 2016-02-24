@@ -70,8 +70,6 @@
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="phone"
-            android:ems="10"
             android:id="@+id/phoneEditText"
             android:layout_column="1"
             android:editable="false"/>
